@@ -1,0 +1,10 @@
+.card {
+  max-height: max-content;
+  max-width: max-content;
+}
+.content-image {
+  max-width: 80%;
+}
+mat-card {
+  background: lightblue;
+}

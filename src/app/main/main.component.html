@@ -1,0 +1,74 @@
+<div fxLayout="column" fxFill>
+  <mat-toolbar fxFlex="5" fxLayout="row" *ngIf="isShowToolbar">
+    <div fxFlex="15" fxLayoutAlign="start">
+      <button mat-icon-button (click)="sidenav.open()">
+        <mat-icon>list</mat-icon>
+      </button>
+    </div>
+    <div fxFlex="70" fxLayoutAlign="center">
+      <button
+        class="drag-home"
+        mat-icon-button
+        cdkDrag
+        [cdkDragFreeDragPosition]="position"
+        (cdkDragReleased)="updatePos()"
+      >
+        <mat-icon>group_work</mat-icon>
+      </button>
+    </div>
+    <div fxFlex="15" fxLayoutAlign="end">
+      <button mat-icon-button (click)="routeProfile()">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>notifications_active</mat-icon>
+      </button>
+      <button mat-icon-button routerLink="setting">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container (backdropClick)="closeNav()" fxFlex="95">
+    <mat-sidenav
+      #sidenav
+      (keydown.escape)="closeNav()"
+      disableClose
+      class="side-nav"
+    >
+      <mat-selection-list [multiple]="false">
+        <mat-list-option routerLink="" (click)="closeNav()">
+          <mat-icon matListIcon>home</mat-icon>
+          Home
+        </mat-list-option>
+        <mat-list-option routerLink="write-post" (click)="closeNav()">
+          <mat-icon matListIcon>create</mat-icon>
+          Write Post
+        </mat-list-option>
+        <mat-list-option (click)="closeNav(); routeProfile()">
+          <mat-icon matListIcon>account_circle</mat-icon>
+          Profile
+        </mat-list-option>
+        <!-- <mat-list-option routerLink="add" (click)="closeNav()">
+          <mat-icon matListIcon>person_add</mat-icon>
+          Add
+        </mat-list-option> -->
+        <mat-list-option routerLink="chat" (click)="closeNav()">
+          <mat-icon matListIcon>chat</mat-icon>
+          Chat
+        </mat-list-option>
+        <mat-list-option routerLink="setting" (click)="closeNav()">
+          <mat-icon matListIcon>settings</mat-icon>
+          Settings
+        </mat-list-option>
+        <mat-list-option routerLink="logout" (click)="closeNav()">
+          <mat-icon matListIcon>reply</mat-icon>
+          Log out
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-divider></mat-divider>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
