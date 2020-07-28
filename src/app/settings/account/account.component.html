@@ -1,0 +1,20 @@
+<div fxLayout="column">
+  <div>
+    <h1 class="setting-title">Account:</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxFill class="setting-content">
+    <h3 fxFlex="90">Username: {{ username }}</h3>
+    <div fxFlex="10">
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxFill class="setting-content">
+    <h3 fxFlex="90">show my username</h3>
+    <mat-slide-toggle [checked]="isShowName" fxFlex="10"></mat-slide-toggle>
+  </div>
+  <mat-divider></mat-divider>
+</div>

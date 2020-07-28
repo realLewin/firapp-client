@@ -1,0 +1,11 @@
+.root {
+  margin-top: 4px;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 50px;
+  height: 90%;
+}
+.setting-title {
+  margin-top: 8px;
+  margin-left: 16px;
+}

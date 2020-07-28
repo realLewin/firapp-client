@@ -1,0 +1,33 @@
+.root {
+  margin-top: 4px;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 50px;
+}
+.backPic {
+  background-image: url("https://media.moddb.com/images/downloads/1/190/189972/pter.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.person-img {
+  width: 10%;
+  /* height: 25%; */
+  border-radius: 50%;
+}
+.card {
+  max-height: max-content;
+  max-width: max-content;
+}
+.content-image {
+  max-width: 80%;
+}
+mat-card {
+  background: lightblue;
+}
+.divider-short {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 30%;
+  align-self: center;
+}

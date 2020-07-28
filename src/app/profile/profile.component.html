@@ -1,0 +1,45 @@
+<div class="root">
+  <mat-grid-list cols="1" class="grid-list" rowHeight="100:33">
+    <mat-grid-tile #personalInfo class="info">
+      <div fxLayout="column" fxLayoutAlign="center" class="backPic">
+        <img
+          fxFlexAlign="center"
+          class="person-img"
+          src="https://pbs.twimg.com/profile_images/1119269505/0509071614Peter_Griffin_400x400.jpg"
+          alt="Avatar"
+        />
+        <mat-divider class="divider-short"></mat-divider>
+        <h1 fxLayoutAlign="center">This is my personal bio</h1>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+  <mat-grid-list cols="3">
+    <mat-grid-tile *ngFor="let _ of [1, 2, 3, 4, 5]">
+      <mat-card>
+        <mat-card-header>
+          <img
+            mat-card-avatar
+            src="https://pbs.twimg.com/profile_images/1119269505/0509071614Peter_Griffin_400x400.jpg"
+            alt="author"
+          />
+          <mat-card-title>Hello bro</mat-card-title>
+          <mat-card-subtitle>Welcome to the funny world!</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          class="content-image"
+          mat-card-image
+          src="https://cdn.costumewall.com/wp-content/uploads/2017/08/peter-griffin.jpg"
+          alt="share by the author"
+        />
+        <mat-card-content>
+          <p>Don't you think this is funny?</p>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="end">
+          <button mat-icon-button><mat-icon>favorite</mat-icon></button>
+          <button mat-icon-button><mat-icon>bookmark</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

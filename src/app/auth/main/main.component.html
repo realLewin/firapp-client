@@ -1,0 +1,44 @@
+<div class="root">
+  <mat-tab-group dynamicHeight="true" mat-align-tabs="center">
+    <mat-tab label="Sign In" class="tab-content">
+      <app-sign-in></app-sign-in>
+    </mat-tab>
+    <mat-tab label="Sign Up" class="tab-content">
+      <app-sign-up></app-sign-up>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<div class="root">
+  <div fxLayoutAlign="center">
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      tickInterval="1000"
+      min="1"
+      max="100000"
+    ></mat-slider>
+  </div>
+  <!-- <div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Personal data
+          </mat-panel-title>
+          <mat-panel-description>
+            Type your name and age
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input matInput type="number" min="1" />
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div> -->
+</div>

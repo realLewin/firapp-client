@@ -1,0 +1,15 @@
+<div fxLayout="column" fxFill>
+  <h1 mat-dialog-title fxFlex="20">
+    Sign up {{ data.isSuccess ? data.success : data.failed }}
+  </h1>
+  <div mat-dialog-content fxLayoutAlign="center" fxFlex="60">
+    <h2 *ngIf="data.isSuccess">Congratelations! you now can log in.</h2>
+    <h2 *ngIf="!data.isSuccess">
+      We are sorry about the fail, please check your infomation carefully
+    </h2>
+  </div>
+  <div mat-dialog-actions fxLayoutAlign="end" fxFlex="20">
+    <button mat-button mat-dialog-close>Back</button>
+    <button mat-button (click)="handleClick()">Login</button>
+  </div>
+</div>

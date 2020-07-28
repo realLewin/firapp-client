@@ -1,1 +1,47 @@
-<p>sign-in works!</p>
+<div class="root">
+  <form
+    [formGroup]="loginForm"
+    fxLayout="column"
+    fxLayoutAlign="center"
+    class="login-form"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>username, or email</mat-label>
+      <input
+        matInput
+        formControlName="account"
+        type="email"
+        placeholder="username, or email"
+        required
+      />
+      <mat-hint>username, or email</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        [type]="isShowPass ? 'text' : 'password'"
+        placeholder="password"
+        required
+      />
+      <button mat-icon-button matSuffix (click)="isShowPass = !isShowPass">
+        <mat-icon>{{ isShowPass ? "visibility" : "visibility_off" }}</mat-icon>
+      </button>
+      <mat-hint>password</mat-hint>
+    </mat-form-field>
+    <div fxLayout="row" fxFill>
+      <button
+        mat-stroked-button
+        (click)="submitForm()"
+        fxFlex="50%"
+        class="form-button"
+      >
+        Log in
+      </button>
+      <button mat-stroked-button fxFlex="50%" class="form-button">
+        Sign up
+      </button>
+    </div>
+  </form>
+</div>

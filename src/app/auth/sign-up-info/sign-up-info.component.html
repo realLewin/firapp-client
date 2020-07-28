@@ -1,0 +1,81 @@
+<form fxLayout="column" fxFill (ngSubmit)="submitForm()" [formGroup]="infoForm">
+  <div fxLayoutAlign="center">
+    <mat-form-field
+      appearance="outline"
+      fxFlex="50"
+      [style.margin-right]="'8px'"
+    >
+      <mat-label>first name</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="First name"
+        formControlName="firstName"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      fxFlex="50"
+      [style.margin-left]="'8px'"
+    >
+      <mat-label>last name</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Last name"
+        formControlName="lastName"
+        required
+      />
+    </mat-form-field>
+  </div>
+  <div fxLayoutAlign="center">
+    <mat-form-field
+      fxFlex="50"
+      appearance="outline"
+      [style.margin-right]="'8px'"
+    >
+      <mat-label>Pick your gender</mat-label>
+      <mat-select formControlName="gender" required>
+        <mat-option *ngFor="let gender of genderOption" [value]="gender.value">
+          {{ gender.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      fxFlex="50"
+      appearance="outline"
+      [style.margin-left]="'8px'"
+    >
+      <mat-label>Pick your birthday from right</mat-label>
+      <input
+        matInput
+        disabled
+        [matDatepicker]="dp"
+        formControlName="birthday"
+        required
+      />
+      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp disabled="false"></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>write your bio</mat-label>
+    <textarea
+      matInput
+      rows="4"
+      cols="50"
+      maxlength="200"
+      class="bio-text"
+      formControlName="bio"
+    ></textarea>
+  </mat-form-field>
+  <button
+    mat-stroked-button
+    type="submit"
+    (click)="open()"
+    [disabled]="this.infoForm.invalid"
+  >
+    Next
+  </button>
+</form>

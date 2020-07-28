@@ -1,0 +1,78 @@
+<div>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper labelPosition="bottom">
+    <mat-step [stepControl]="emailForm">
+      <form [formGroup]="emailForm">
+        <ng-template matStepLabel>Fill your email</ng-template>
+        <mat-form-field>
+          <mat-label>email</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="userDataForm" [optional]="isOptional">
+      <form [formGroup]="userDataForm" fxLayout="column">
+        <ng-template matStepLabel>Fill your personal data</ng-template>
+        <mat-form-field>
+          <mat-label>user data</mat-label>
+          <input
+            matInput
+            formControlName="username"
+            placeholder="username"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>select gender</mat-label>
+          <mat-select formControlName="userGender">
+            <mat-option
+              #option
+              *ngFor="let gender of genderOption"
+              [value]="gender.id"
+            >
+              {{ gender.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>select your birthday</mat-label>
+          <input matInput [matDatepicker]="dp" disabled />
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>user avatar</mat-label>
+          <input
+            matInput
+            formControlName="userAvatar"
+            placeholder="userAvatar"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>user bio</mat-label>
+          <input matInput formControlName="userBio" placeholder="userBio" />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

@@ -1,0 +1,44 @@
+<div class="root">
+  <div fxLayout="row" fxFill>
+    <div fxLayout="column" fxFlex="20">
+      <mat-action-list>
+        <button mat-list-item (click)="goBack()" routerLink="/home">
+          Back
+          <mat-icon matListIcon>arrow_back_ios</mat-icon>
+        </button>
+      </mat-action-list>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div fxLayout="column" fxFlex="30">
+      <h1 class="setting-title">Settings</h1>
+      <mat-divider></mat-divider>
+      <h1 class="setting-title">{{ userId }}</h1>
+      <mat-divider></mat-divider>
+      <mat-action-list>
+        <button
+          mat-list-item
+          *ngFor="let userSetting of userSettings"
+          routerLink="{{ userSetting | lowercase }}"
+        >
+          {{ userSetting }}
+        </button>
+      </mat-action-list>
+      <mat-divider></mat-divider>
+      <h1 class="setting-title">General</h1>
+      <mat-divider></mat-divider>
+      <mat-action-list>
+        <button
+          mat-list-item
+          *ngFor="let generalSetting of generalSettings"
+          routerLink="{{ generalSetting | lowercase }}"
+        >
+          {{ generalSetting }}
+        </button>
+      </mat-action-list>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div fxFlex="50">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
