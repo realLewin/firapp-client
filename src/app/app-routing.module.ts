@@ -1,30 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
-import { WritePostComponent } from './write-post/write-post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: HomepageComponent,
-//   },
-//   {
-//     path: 'welcome',
-//     loadChildren: () =>
-//       import(`./welcome/welcome.module`).then((m) => m.WelcomeModule),
-//   },
-//   {
-//     path: 'auth',
-//     loadChildren: () => import(`./auth/auth.module`).then((m) => m.AuthModule),
-//   },
-//   {
-//     path: 'settings',
-//     loadChildren: () =>
-//       import(`./settings/settings.module`).then((m) => m.SettingsModule),
-//   },
-// ];
 
 const routes: Routes = [
   {
@@ -58,7 +36,10 @@ const routes: Routes = [
     children: [
       {
         path: 'write-post',
-        component: WritePostComponent,
+        loadChildren: () =>
+          import(`./write-post/write-post.module`).then(
+            (m) => m.WritePostModule
+          ),
       },
       {
         path: 'settings',

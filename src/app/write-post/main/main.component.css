@@ -1,4 +1,27 @@
-.root {
+.main {
+  margin-top: 32px;
+}
+.title {
+  width: 80%;
+  align-self: center;
+  margin: 16px;
+}
+.content {
+  width: 80%;
+  align-self: center;
+  margin: 16px;
+}
+.button {
+  width: 60%;
+  align-self: center;
+  margin: 16px;
+}
+textarea {
+  resize: none;
+}
+
+/* Version 1 */
+/* .root {
   margin-top: 4px;
   margin-left: 32px;
   margin-right: 32px;
@@ -22,4 +45,4 @@ input {
 }
 textarea {
   font-size: 18px;
-}
+} */

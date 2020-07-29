@@ -11,10 +11,14 @@ import { MainComponent } from './main/main.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
-import { WritePostComponent } from './write-post/write-post.component';
 
 @NgModule({
-  declarations: [MainComponent, HomepageComponent, PageNotFoundComponent, ProfileComponent, WritePostComponent],
+  declarations: [
+    MainComponent,
+    HomepageComponent,
+    PageNotFoundComponent,
+    ProfileComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
