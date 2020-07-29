@@ -1,0 +1,48 @@
+.main {
+  margin-top: 32px;
+}
+.title {
+  width: 80%;
+  align-self: center;
+  margin: 16px;
+}
+.content {
+  width: 80%;
+  align-self: center;
+  margin: 16px;
+}
+.button {
+  width: 60%;
+  align-self: center;
+  margin: 16px;
+}
+textarea {
+  resize: none;
+}
+
+/* Version 1 */
+/* .root {
+  margin-top: 4px;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 50px;
+  height: 90%;
+}
+.back-text {
+  margin-top: 4px;
+  font-size: 24px;
+}
+.post-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+input {
+  width: 520px;
+  height: 40px;
+  font-size: 36px;
+}
+textarea {
+  font-size: 18px;
+} */
