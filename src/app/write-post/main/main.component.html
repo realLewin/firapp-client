@@ -1,4 +1,4 @@
-<div>
+<div fxLayout="column">
   <form
     (submit)="onSubmit()"
     [formGroup]="postForm"
@@ -24,8 +24,34 @@
       ></textarea>
       <mat-hint>write your post content here</mat-hint>
     </mat-form-field>
-    <button mat-button type="submit" class="button">Post</button>
+    <!-- <button mat-button type="submit" class="button">Post</button> -->
   </form>
+
+  <div fxFill fxLayout="row" class="image-part">
+    <!-- <img [src]="profileUrl | async" /> -->
+    <!-- <input #file type="file" (change)="uploadFile($event)" /> -->
+    <button mat-stroked-button fxFlex="33">upload</button>
+    <div fxFlex="33" class="image-field" [ngStyle]="divStyle">
+      <label fxLayoutAlign="center" for="input" class="input-label">
+        <p *ngIf="uploadImageUrl === ''">choose your file</p>
+      </label>
+      <input
+        #file
+        type="file"
+        class="file-chose"
+        id="input"
+        (change)="changeImage()"
+      />
+    </div>
+    <button mat-stroked-button fxFlex="33">Post</button>
+  </div>
+
+  <!-- <div fxLayoutAlign="center">
+    <button mat-button (click)="updateImageDisplay()">show url</button>
+    <div *ngFor="let url of imageUrl">
+      <img [src]="getSantizeUrl(url)" class="post-image" />
+    </div>
+  </div> -->
 </div>
 
 <!-- The version 1 -->

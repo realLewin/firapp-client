@@ -19,6 +19,28 @@
 textarea {
   resize: none;
 }
+.post-image {
+  width: 80%;
+  height: 80%;
+}
+.file-chose {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+.image-field {
+  width: 256px;
+  height: 256px;
+  background-color: aliceblue;
+  /* background-image: url(https://vignette.wikia.nocookie.net/p__/images/e/e0/Peter_Griffin_%281%29.png/revision/latest/top-crop/width/360/height/450?cb=20190325003316&path-prefix=protagonist); */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.input-label {
+  padding-top: 40%;
+  padding-bottom: 40%;
+}
 
 /* Version 1 */
 /* .root {
