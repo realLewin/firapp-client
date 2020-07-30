@@ -8,9 +8,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProcessPostService {
+  postUrl: string = 'http://localhost:7777/api/post/post';
+  getUrl: string = 'http://localhost:7777/api/post/get';
   httpPost: Observable<object>;
+  httpGet: Observable<Post[]>;
   result: string = '';
-  postUrl: string = 'http://localhost:7777/api/post';
+  getResult: object;
 
   constructor(private http: HttpClient) {}
 
@@ -19,5 +22,12 @@ export class ProcessPostService {
     this.httpPost.subscribe((m) => (this.result = m.toString()));
     return this.result;
     // return this.http.post(this.postUrl, postData);
+  }
+
+  getAllPost() {
+    this.httpGet = this.http.get<Post[]>(this.getUrl);
+    return this.httpGet;
+    // this.httpGet.subscribe((m) => (this.getResult = m));
+    // return this.getResult;
   }
 }
