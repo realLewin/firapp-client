@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
@@ -30,6 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
     FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [MainComponent],

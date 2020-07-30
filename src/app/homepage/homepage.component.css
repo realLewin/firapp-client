@@ -4,7 +4,17 @@
 }
 .content-image {
   max-width: 80%;
+  /* width: inherit; */
 }
 mat-card {
   background: lightblue;
+}
+.file-chose {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+.card-image {
+  width: inherit;
+  height: fit-content;
 }

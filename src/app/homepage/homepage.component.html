@@ -1,4 +1,30 @@
+<!-- version three -->
 <div class="root">
+  <mat-grid-list cols="3">
+    <mat-grid-tile *ngFor="let post of allPost">
+      <div fxLayout="column" fxFill>
+        <h1 fxLayoutAlign="center start">{{ post.title }}</h1>
+        <h2 fxLayoutAlign="center start">{{ post.content }}</h2>
+        <img [src]="profileUrl | async" class="card-image" />
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div>
+  <!-- <img [src]="profileUrl | async" /> -->
+  <!-- <input #file type="file" (change)="uploadFile($event)" /> -->
+  <label for="input">choose your file</label>
+  <input #file type="file" class="file-chose" id="input" />
+  <div>
+    <button mat-button (click)="updateImageDisplay()">show url</button>
+    <div *ngFor="let url of imageUrl">
+      <img [src]="getSantizeUrl(url)" />
+    </div>
+  </div>
+</div>
+
+<!-- version two -->
+<!-- <div class="root">
   <mat-grid-list cols="3">
     <mat-grid-tile *ngFor="let _ of [1, 2, 3, 4, 5]">
       <mat-card routerLink="/post-detail">
@@ -27,8 +53,9 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
-</div>
+</div> -->
 
+<!-- version one -->
 <!-- <mat-card>
     <mat-card-header>
       <img
