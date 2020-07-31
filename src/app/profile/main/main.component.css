@@ -31,3 +31,8 @@ mat-card {
   width: 30%;
   align-self: center;
 }
+
+.post-card {
+  width: inherit;
+  height: inherit;
+}

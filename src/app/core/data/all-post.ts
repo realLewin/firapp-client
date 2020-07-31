@@ -4,21 +4,21 @@ export const AllPost: Post[] = [
   {
     title: 'one',
     content: 'content one',
-    imagePath: 'ffff',
+    imagePath: 'https://upload.wikimedia.org/wikipedia/commons/7/71/Black.png',
   },
   {
     title: 'one',
     content: 'content one',
-    imagePath: 'ffff',
+    imagePath: 'https://upload.wikimedia.org/wikipedia/commons/7/71/Black.png',
   },
   {
     title: 'one',
     content: 'content one',
-    imagePath: 'ffff',
+    imagePath: 'https://upload.wikimedia.org/wikipedia/commons/7/71/Black.png',
   },
   {
     title: 'one',
     content: 'content one',
-    imagePath: 'ffff',
+    imagePath: 'https://upload.wikimedia.org/wikipedia/commons/7/71/Black.png',
   },
 ];

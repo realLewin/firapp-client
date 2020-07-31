@@ -30,7 +30,7 @@
   <div fxFill fxLayout="row" class="image-part">
     <!-- <img [src]="profileUrl | async" /> -->
     <!-- <input #file type="file" (change)="uploadFile($event)" /> -->
-    <button mat-stroked-button fxFlex="33">upload</button>
+    <button mat-stroked-button fxFlex="33" routerLink="/welcome">Cancel</button>
     <div fxFlex="33" class="image-field" [ngStyle]="divStyle">
       <label fxLayoutAlign="center" for="input" class="input-label">
         <p *ngIf="uploadImageUrl === ''">choose your file</p>

@@ -14,7 +14,20 @@
     </mat-grid-tile>
   </mat-grid-list>
   <mat-divider></mat-divider>
-  <mat-grid-list cols="3">
+  <div class="root">
+    <mat-grid-list cols="3">
+      <mat-grid-tile *ngFor="let post of allPost; index as i">
+        <app-post-card
+          [index]="i"
+          [imageUrl]="imageUrl"
+          [post]="post"
+          class="post-card"
+        ></app-post-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <!-- <mat-grid-list cols="3">
     <mat-grid-tile *ngFor="let _ of [1, 2, 3, 4, 5]">
       <mat-card>
         <mat-card-header>
@@ -41,5 +54,5 @@
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
-  </mat-grid-list>
+  </mat-grid-list> -->
 </div>

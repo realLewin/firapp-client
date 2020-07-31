@@ -9,20 +9,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [
-    MainComponent,
-    HomepageComponent,
-    PageNotFoundComponent,
-    ProfileComponent,
-  ],
+  declarations: [MainComponent, HomepageComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -34,6 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [MainComponent],

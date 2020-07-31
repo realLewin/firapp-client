@@ -1,0 +1,8 @@
+.card-image {
+  width: inherit;
+  height: min-content;
+}
+.post-card {
+  width: inherit;
+  height: inherit;
+}

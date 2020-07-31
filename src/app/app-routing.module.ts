@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
-import { ProfileComponent } from './profile/profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {
   AngularFireAuthGuard,
@@ -38,7 +37,8 @@ const routes: Routes = [
   },
   {
     path: 'profile/:id',
-    component: ProfileComponent,
+    loadChildren: () =>
+      import(`./profile/profile.module`).then((m) => m.ProfileModule),
     ...canActivate(onlyAllowSelf),
   },
   {
