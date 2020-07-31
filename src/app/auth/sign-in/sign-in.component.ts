@@ -58,11 +58,11 @@ export class SignInComponent {
       if (m) {
         setTimeout(() => {
           this.dialogRef.close();
-          this.router.navigate(['']);
+          this.router.navigate(['/welcome']);
         }, 1000);
       } else {
         this.dialogRef.close();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth']);
       }
     });
   }

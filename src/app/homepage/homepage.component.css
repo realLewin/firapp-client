@@ -9,7 +9,7 @@
 mat-card {
   background: lightblue;
 }
-.card-image {
+.post-card {
   width: inherit;
-  height: fit-content;
+  height: inherit;
 }

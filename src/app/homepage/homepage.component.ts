@@ -11,10 +11,9 @@ import { AllPost } from 'src/app/core/data/all-post';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  allPost: Post[] = [];
-  profileUrl: Observable<string | null>;
   BLANK_IMAGE_URL = 'https://i.stack.imgur.com/Vkq2a.png';
-  isShowImage: boolean = false;
+  profileUrl: Observable<string | null>;
+  allPost: Post[] = [];
   imageUrl: string[] = [];
 
   constructor(
@@ -45,6 +44,5 @@ export class HomepageComponent implements OnInit {
         this.imageUrl.push(m);
       });
     });
-    this.isShowImage = true;
   }
 }

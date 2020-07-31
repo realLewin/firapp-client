@@ -8,8 +8,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProcessPostService {
-  postUrl: string = 'http://localhost:7777/api/post/post';
-  getUrl: string = 'http://localhost:7777/api/post/get';
+  // postUrl: string = 'http://localhost:7777/api/post/post';
+  // getUrl: string = 'http://localhost:7777/api/post/get';
+  postUrl: string = 'http://firapp.fun:7777/api/post/post';
+  getUrl: string = 'http://firapp.fun:7777/api/post/get';
   httpPost: Observable<object>;
   httpGet: Observable<Post[]>;
   result: string = '';

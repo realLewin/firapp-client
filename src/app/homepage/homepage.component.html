@@ -1,12 +1,18 @@
 <!-- version three -->
 <div class="root">
-  <mat-grid-list cols="3">
+  <mat-grid-list cols="3" rowHeight="1:1">
     <mat-grid-tile *ngFor="let post of allPost; index as i">
-      <div fxLayout="column" fxFill>
+      <!-- <div fxLayout="column" fxFill>
         <h1 fxLayoutAlign="center start">{{ post.title }}</h1>
         <h2 fxLayoutAlign="center start">{{ post.content }}</h2>
         <img [src]="imageUrl[i]" class="card-image" />
-      </div>
+      </div> -->
+      <app-post-card
+        [index]="i"
+        [imageUrl]="imageUrl"
+        [post]="post"
+        class="post-card"
+      ></app-post-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
