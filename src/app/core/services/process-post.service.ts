@@ -17,11 +17,11 @@ export class ProcessPostService {
 
   constructor(private http: HttpClient) {}
 
-  postPost(postData: Post) {
-    this.httpPost = this.http.post(this.postUrl, postData);
-    this.httpPost.subscribe((m) => (this.result = m.toString()));
-    return this.result;
-    // return this.http.post(this.postUrl, postData);
+  postPost(postData: Post): Observable<string> {
+    // this.httpPost = this.http.post(this.postUrl, postData);
+    // this.httpPost.subscribe((m) => (this.result = m.toString()));
+    // return this.result;
+    return this.http.post<string>(this.postUrl, postData);
   }
 
   getAllPost() {
