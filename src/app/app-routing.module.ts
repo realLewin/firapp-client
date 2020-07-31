@@ -3,36 +3,47 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {
+  AngularFireAuthGuard,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+  canActivate,
+} from '@angular/fire/auth-guard';
+import { map } from 'rxjs/operators';
+
+const redirectUnauthorizedToWelcome = () => redirectUnauthorizedTo(['welcome']);
+const redirectLoggedUserToHome = () => redirectLoggedInTo(['']);
+const onlyAllowSelf = (next) =>
+  map((user) => !!user && (user as any).uid === next.params.id);
 
 const routes: Routes = [
   {
     path: 'welcome',
-    // ...canActivate(redirectLoggedUserToHome),
+    ...canActivate(redirectLoggedUserToHome),
     loadChildren: () =>
       import(`./welcome/welcome.module`).then((m) => m.WelcomeModule),
   },
   {
     path: 'auth',
     loadChildren: () => import(`./auth/auth.module`).then((m) => m.AuthModule),
-    // ...canActivate(redirectLoggedUserToHome),
   },
   {
     path: '',
     component: HomepageComponent,
     pathMatch: 'full',
-    // canActivate: [AngularFireAuthGuard],
-    // data: {
-    //   authGuardPipe: redirectUnauthorizedToWelcome,
-    // },
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToWelcome,
+    },
   },
   {
     path: 'profile/:id',
     component: ProfileComponent,
-    // ...canActivate(onlyAllowSelf),
+    ...canActivate(onlyAllowSelf),
   },
   {
     path: '',
-    // ...canActivate(redirectUnauthorizedToWelcome),
+    ...canActivate(redirectUnauthorizedToWelcome),
     children: [
       {
         path: 'write-post',
@@ -46,11 +57,6 @@ const routes: Routes = [
         loadChildren: () =>
           import(`./settings/settings.module`).then((m) => m.SettingsModule),
       },
-      // {
-      //   path: 'logout',
-      //   loadChildren: () =>
-      //     import(`./logout/logout.module`).then((m) => m.LogoutModule),
-      // },
     ],
   },
   { path: '**', component: PageNotFoundComponent },
