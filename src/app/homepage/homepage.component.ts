@@ -13,6 +13,9 @@ import { AllPost } from 'src/app/core/data/all-post';
 export class HomepageComponent implements OnInit {
   allPost: Post[] = [];
   profileUrl: Observable<string | null>;
+  BLANK_IMAGE_URL = 'https://i.stack.imgur.com/Vkq2a.png';
+  isShowImage: boolean = false;
+  imageUrl: string[] = [];
 
   constructor(
     private _processPost: ProcessPostService,
@@ -21,24 +24,27 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     // init the post data;
-    this.allPost = AllPost;
+    this.getAllPost();
+  }
 
+  // Fetch the post from server side;
+  getAllPost() {
+    const result = this._processPost.getAllPost();
+    result.subscribe((m) => {
+      this.allPost = m;
+      this.showImage();
+    });
+  }
+
+  showImage() {
     // Fetch the image from firebase;
-    const ref = this.storage.ref('images/8hro4MH.jpg');
-    this.profileUrl = ref.getDownloadURL();
+    this.allPost.forEach((post) => {
+      const ref = this.storage.ref(post.imagePath);
+      this.profileUrl = ref.getDownloadURL();
+      this.profileUrl.subscribe((m) => {
+        this.imageUrl.push(m);
+      });
+    });
+    this.isShowImage = true;
   }
 }
-
-// Fetch the post from server side;
-// getAllPost() {
-//   const result = this._processPost.getAllPost();
-//   result.subscribe((m) => console.log(m));
-//   result.subscribe((m) => {
-//     this.allPost = m;
-//   });
-// }
-
-// {
-// This part should put in the ngOnInit method;
-// this.getAllPost(); // Fetch the post form server;
-// }

@@ -1,11 +1,11 @@
 <!-- version three -->
 <div class="root">
   <mat-grid-list cols="3">
-    <mat-grid-tile *ngFor="let post of allPost">
+    <mat-grid-tile *ngFor="let post of allPost; index as i">
       <div fxLayout="column" fxFill>
         <h1 fxLayoutAlign="center start">{{ post.title }}</h1>
         <h2 fxLayoutAlign="center start">{{ post.content }}</h2>
-        <img [src]="profileUrl | async" class="card-image" />
+        <img [src]="imageUrl[i]" class="card-image" />
       </div>
     </mat-grid-tile>
   </mat-grid-list>
