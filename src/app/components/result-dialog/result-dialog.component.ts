@@ -19,6 +19,6 @@ export class ResultDialogComponent implements OnInit {
 
   handleClick() {
     this.dialogRef.close();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/welcome']);
   }
 }

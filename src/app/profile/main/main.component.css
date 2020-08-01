@@ -26,8 +26,8 @@ mat-card {
   background: lightblue;
 }
 .divider-short {
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   width: 30%;
   align-self: center;
 }
@@ -35,4 +35,8 @@ mat-card {
 .post-card {
   width: inherit;
   height: inherit;
+}
+.username {
+  margin: 0;
+  padding: 0;
 }

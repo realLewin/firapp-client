@@ -8,6 +8,9 @@ import { LoadingDialogComponent } from 'src/app/components/loading-dialog/loadin
 import { Router } from '@angular/router';
 import { ResultDialogComponent } from 'src/app/components/result-dialog/result-dialog.component';
 import { Result } from 'src/app/core/models/sign-up-result';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from 'firebase';
+import { SignupInfoService } from 'src/app/core/services/signup-info.service';
 
 @Component({
   selector: 'app-sign-up-account',
@@ -31,13 +34,16 @@ export class SignUpAccountComponent implements OnInit {
     success: 'Success',
     failed: 'Failed',
   };
+  user: User;
 
   constructor(
     private fb: FormBuilder,
     private _signupAccount: SignupAccountService,
     private _signup: SignupService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private auth: AngularFireAuth,
+    private _signupInfo: SignupInfoService
   ) {}
 
   ngOnInit(): void {
@@ -54,15 +60,61 @@ export class SignUpAccountComponent implements OnInit {
     console.log('form two submitted!');
     this._signup.addFormData();
     this.openDialog();
-    const ob = this._signup.processSignup();
-    ob.subscribe((m) => {
-      this.signupResult.isSuccess = m;
-      setTimeout(() => {
-        this.dialogRef.close();
-      }, 1000);
+    const ob = this._signup.sub;
+    console.log(this._signup.getAllInfo());
+    ob.subscribe((user) => {
+      if (user === null) {
+        this.signupResult.isSuccess = false;
+        console.log('error');
+        setTimeout(() => {
+          this.dialogRef.close();
+        }, 1000);
+      } else {
+        user.then(
+          (value) => {
+            this.signupResult.isSuccess = true;
+            this.updateUserProfile();
+            console.log(value);
+            setTimeout(() => {
+              this.dialogRef.close();
+            }, 1000);
+          },
+          (reason) => {
+            this.signupResult.isSuccess = false;
+            console.log(reason);
+            setTimeout(() => {
+              this.dialogRef.close();
+            }, 1000);
+          }
+        );
+      }
     });
+    this._signup.processSignup();
+    // ob.subscribe((m) => {
+    //   this.signupResult.isSuccess = m;
+    //   setTimeout(() => {
+    //     this.dialogRef.close();
+    //   }, 1000);
+    // });
+  }
+  updateUserProfile() {
+    this.auth.currentUser.then(
+      (value) => {
+        this.user = value;
+        const info = this._signupInfo.getInfo();
+        this.user.updateProfile({
+          displayName:
+            info.find((e) => e.name === 'firstName').value +
+            info.find((e) => e.name === 'lastName').value,
+          photoURL:
+            'https://upload.wikimedia.org/wikipedia/commons/7/71/Black.png',
+        });
+      },
+      (reason) => console.log(reason)
+    );
   }
   processFormData() {
+    this.formInfo = [];
     this.formInfo.push({
       name: 'email',
       value: this.accountForm.get('email').value,

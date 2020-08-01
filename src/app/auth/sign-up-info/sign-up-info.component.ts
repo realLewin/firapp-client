@@ -51,11 +51,12 @@ export class SignUpInfoComponent implements OnInit {
     this._signupInfo.addInfo(this.formInfo);
     //for test purpose
     console.log('form one submitted!');
-    this._signupInfo.getInfo().subscribe((m) => console.log(m));
+    console.log(this._signupInfo.getInfo());
   }
 
   //convert form info to Info type
   processForm() {
+    this.formInfo = [];
     //push the infoForm's info to the variable
     this.formInfo.push({
       name: 'firstName',
