@@ -11,6 +11,7 @@ import { ProcessPostService } from 'src/app/core/services/process-post.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-main',
@@ -28,12 +29,15 @@ export class MainComponent implements OnInit, AfterViewInit {
   // sampleImageUrl: string = 'https://i.ytimg.com/vi/bbIRfQ6K87M/maxresdefault.jpg'
   // sampleImage: string = `url(${this.sampleImageUrl})`;
   divStyle: object = {};
+  imagePath: string = '';
+  user: firebase.User;
 
   constructor(
     private fb: FormBuilder,
     private _processPost: ProcessPostService,
     private sanitizer: DomSanitizer,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private auth: AngularFireAuth
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +45,12 @@ export class MainComponent implements OnInit, AfterViewInit {
       title: ['', Validators.required],
       content: ['', Validators.required],
     });
+    this.auth.currentUser.then(
+      (user) => {
+        this.user = user;
+      },
+      (reason) => console.log(reason)
+    );
   }
 
   ngAfterViewInit(): void {
@@ -70,22 +80,29 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     this.curFiles = this.input.files;
     const file = this.curFiles[0];
-    this.postData.imagePath = 'images/' + file.name;
+    this.imagePath = this.user.email + '/images/' + file.name;
 
+    this.postData.imagePath = this.imagePath;
     console.log(this.postData);
 
     const httpPost: Observable<string> = this._processPost.postPost(
       this.postData
     );
-    httpPost.subscribe((m) => {
-      this.uploadImage().then((m) => {
-        if (m) {
-          this.onUploadComplete();
-        } else {
-          console.log('error');
-        }
-      });
-    });
+    httpPost.subscribe(
+      (m) => {
+        this.uploadImage().then(
+          (m) => {
+            if (m) {
+              this.onUploadComplete();
+            } else {
+              console.log('error');
+            }
+          },
+          (err) => console.log('firebase error' + err)
+        );
+      },
+      (err) => console.log('database error: ' + err)
+    );
   }
 
   // ------ The worry method;
@@ -114,7 +131,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   async uploadImage(): Promise<boolean> {
     this.curFiles = this.input.files;
     const file = this.curFiles[0];
-    const filePath = 'images/' + file.name;
+    const filePath = this.imagePath;
     const storageRef = this.storage.ref(filePath);
     const task = storageRef.put(file);
     let result: boolean = false;
