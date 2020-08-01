@@ -11,9 +11,13 @@ export class SignupAccountService {
   constructor() {}
 
   addInfo(info: Info[]) {
-    this.accountInfo = info;
+    this.accountInfo = [];
+    this.accountInfo.push(...info);
   }
-  getInfo(): Observable<Info[]> {
-    return of(this.accountInfo);
+  // getInfo(): Observable<Info[]> {
+  //   return of(this.accountInfo);
+  // }
+  getInfo() {
+    return this.accountInfo;
   }
 }
