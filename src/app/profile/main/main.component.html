@@ -5,12 +5,12 @@
         <img
           fxFlexAlign="center"
           class="person-img"
-          src="https://pbs.twimg.com/profile_images/1119269505/0509071614Peter_Griffin_400x400.jpg"
+          [src]="userPhotoUrl"
           alt="Avatar"
         />
-        <h1 fxLayoutAlign="center" class="username">Username</h1>
+        <h1 fxLayoutAlign="center" class="username">{{ userName }}</h1>
         <mat-divider class="divider-short"></mat-divider>
-        <h3 fxLayoutAlign="center">This is my personal bio</h3>
+        <h3 fxLayoutAlign="center">{{ userBio }}</h3>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
