@@ -1,8 +1,39 @@
 .card-image {
-  width: inherit;
-  height: min-content;
+  height: 50%;
+  width: auto;
 }
 .post-card {
   width: inherit;
   height: inherit;
+  border: solid 1px rgb(197, 196, 196);
+}
+.user-action {
+  width: 100%;
+}
+.but-com {
+  padding-top: 16px;
+  align-self: center;
+}
+.but-fav {
+  padding-top: 16px;
+  align-self: center;
+}
+.but-boo {
+  padding-top: 16px;
+  align-self: center;
+}
+.placeholder {
+  width: 70%;
+}
+.person-img {
+  width: 90%;
+  height: auto;
+  border-radius: 50%;
+}
+.text-con {
+  margin-left: 16px;
+  margin-top: 8px;
+}
+.input-com {
+  width: 100%;
 }

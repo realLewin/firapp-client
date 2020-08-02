@@ -1,5 +1,45 @@
 <div fxLayout="column" fxFill class="post-card">
-  <h1 fxLayoutAlign="center center">{{ post.title }}</h1>
-  <h2 fxLayoutAlign="center center">{{ post.content }}</h2>
-  <img [src]="imageUrl[index]" class="card-image" />
+  <div fxFlex="20" fxLayout="row">
+    <div fxFlex="20" fxLayoutAlign="center">
+      <img
+        fxFlexAlign="center"
+        class="person-img"
+        [src]="userPhotoUrl"
+        alt="Avatar"
+      />
+    </div>
+    <div fxLayout="column" fxFlex="80" class="text-con">
+      <h1 fxFlex="20">{{ post.title }}</h1>
+      <h2 fxFlex="80">{{ post.content }}</h2>
+    </div>
+  </div>
+  <img
+    fxLayoutAlign="center center"
+    [src]="imageUrl[index]"
+    class="card-image"
+    fxFlex="67"
+  />
+  <div class="user-action" fxLayout="row" fxLayoutAlign="center" fxFlex="10">
+    <div class="but-com">
+      <button mat-icon-button>
+        <mat-icon>comment</mat-icon>
+      </button>
+    </div>
+    <div class="placeholder" fxLayoutAlign="center">
+      <mat-form-field class="input-com">
+        <mat-label>Say something...</mat-label>
+        <input matInput type="text" />
+      </mat-form-field>
+    </div>
+    <div class="but-fav">
+      <button mat-icon-button [color]="isLiked ? 'primary' : ''">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+    <div class="but-boo">
+      <button mat-icon-button [color]="isMarked ? 'primary' : ''">
+        <mat-icon>bookmark</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

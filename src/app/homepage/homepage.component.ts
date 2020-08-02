@@ -15,6 +15,8 @@ export class HomepageComponent implements OnInit {
   profileUrl: Observable<string | null>;
   allPost: Post[] = [];
   imageUrl: string[] = [];
+  breakpoint: number;
+  windowSize: number;
 
   constructor(
     private _processPost: ProcessPostService,
@@ -24,6 +26,8 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     // init the post data;
     this.getAllPost();
+    this.windowSize = window.innerWidth;
+    this.changeLayout();
   }
 
   // Fetch the post from server side;
@@ -44,5 +48,20 @@ export class HomepageComponent implements OnInit {
         this.imageUrl.push(m);
       });
     });
+  }
+
+  onResize(event) {
+    this.windowSize = event.target.innerWidth;
+    this.changeLayout();
+  }
+
+  changeLayout() {
+    if (this.windowSize <= 600) {
+      this.breakpoint = 1;
+    } else if (this.windowSize > 600 && this.windowSize <= 960) {
+      this.breakpoint = 2;
+    } else {
+      this.breakpoint = 3;
+    }
   }
 }
